@@ -1,0 +1,22 @@
+<a href="https://www.facebook.com/sharer.php?u={{ yourURL }}" rel="me" title="Facebook" target="_blank"><i class="fa facebook"></i></a>
+<a href="https://twitter.com/share?url={{ yourURL }}&text={{ yourTitle }}" rel="me" title="Twitter" target="_blank"><i class="fa twitter"></i></a>
+<a href="https://pinterest.com/pin/create/button/?url={{ yourURL }}&media={{ yourImagePath }}&description={{ yourDescription }}" rel="me" title="Pinterest" target="_blank"><i class="fa pinterest"></i></a>
+<a href="https://www.thefancy.com/fancyit?ItemURL={{ yourURL }}&Title={{ yourTitle }}&Category={{ yourCategory }}&ImageURL={{ yourImageUrl }}" rel="me" title="Fancy" target="_blank"><i class="fa fancy"></i></a>
+
+<!-- For Whatsapp its little tricky as we will need to change URL according to device -->
+
+<a id="whatsapp_link" class="share-icon bg-facebook" href="https://web.whatsapp.com/send?phone=&text={{ yourURL }}" target="_blank">
+  <i class="fa fa-whatsapp custom-whts-icon"></i>
+</a>
+<input type="hidden" id="whatsapp_content" value="{{ yourURL }}">
+
+<script>
+  $(document).ready(function(){
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+        var currUrl = $('#whatsapp_content').val();
+        $("#whatsapp_link").attr("href", "whatsapp://send?text="+currUrl+"");
+        $("#whatsapp_link").attr("data-action","share/whatsapp/share");
+    }
+})
+</script>
